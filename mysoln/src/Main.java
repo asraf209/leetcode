@@ -3,6 +3,6 @@
  */
 public class Main {
     public static void main(String[] args){
-        System.out.println(P4.getLongestLength("abcabcddbb"));
+        System.out.println(P3.getLongestLength("abcabcddbb"));
     }
 }
