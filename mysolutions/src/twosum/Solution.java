@@ -1,5 +1,10 @@
 package twosum;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class Solution {
 
 	/**
@@ -20,6 +25,31 @@ public class Solution {
 					return out;
 				}
 			}
+		}		
+		return null;
+	}
+	
+	/**
+	 * Time: O(n); Space: O(n)
+	 * @param a
+	 * @param target
+	 * @return
+	 */
+	public static int[] findTargetBetterOne(int[] a, int target){
+		if(a==null || a.length==0)	return null;
+		
+		int[] out = new int[2];
+		Map<Integer, Integer> visited = new HashMap<Integer, Integer>();
+		
+		for(int i=0; i<a.length; i++){
+			int remaining = Math.abs(a[i] - target);
+			if(visited.containsKey(remaining)){
+				out[0] = i;
+				out[1] = visited.get(remaining);
+				return out;
+			}
+			else
+				visited.put(a[i], i);			
 		}		
 		return null;
 	}
