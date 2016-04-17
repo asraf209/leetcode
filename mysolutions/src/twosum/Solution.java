@@ -2,6 +2,12 @@ package twosum;
 
 public class Solution {
 
+	public int[] findTarget(int[] a){
+		if(a==null || a.length==0)	return null;
+		
+		return null;
+	}
+	
 	/**
 	 * @param args
 	 */
