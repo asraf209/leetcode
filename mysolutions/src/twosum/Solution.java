@@ -1,14 +1,12 @@
 package twosum;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class Solution {
 
 	/**
-	 * Trivial solution. O(n^2)
+	 * Trivial solution. Time: O(n^2)
 	 * @param a
 	 * @param target
 	 * @return
@@ -57,8 +55,7 @@ public class Solution {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) {		
 		int[] a = {2, 7, 11, 15}; 
 		int target = 9;
 		
