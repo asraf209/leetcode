@@ -1,12 +1,9 @@
 package threesum;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import sun.awt.windows.ThemeReader;
 
 public class Solution {
 	
@@ -28,12 +25,10 @@ public class Solution {
 				twoSum.add(pair);
 			}
 		}
-		System.out.println(twoSum);
 		
 		Set<ArrayList<Integer>> threeSum = new HashSet<ArrayList<Integer>>();
 		for(List<Integer> pair : twoSum){			
-			for(int n : a){
-				//System.out.println(pair);
+			for(int n : a){				
 				if(doSum(pair, n) == 0){					
 					ArrayList<Integer> triplet = new ArrayList<Integer>();
 					if(n<=pair.get(0)){
@@ -72,12 +67,7 @@ public class Solution {
 	public static void main(String[] args) {
 		int[] a = {-1, 0, 1, 2, -1, -4}; 
 		int target = 0;
-		System.out.println(get3Sum(a, target));
-		/*int[] trivialOut = findTargetTrivial(a, target);
-		assert(trivialOut[0] == 0);
-		assert(trivialOut[1] == 1);
-		System.out.println(trivialOut[0] + ", " + trivialOut[1]);
-		*/
+		System.out.println(get3Sum(a, target));			
 	}
 
 }
