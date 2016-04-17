@@ -7,34 +7,55 @@ import java.util.List;
 public class Solution {
 	
 	public static List<List<Integer>> get3Sum(int[] a, int target){
-		if(a==null || a.length<3)	return null;
-		
-		Arrays.sort(a);
+		if(a==null || a.length<3)	return null;		
 		
 		List<List<Integer>> twoSum = new ArrayList<>();
-		for(int i=0; i<a.length-1; i++){
-			List<Integer> sum = new ArrayList<>();
+		for(int i=0; i<a.length-1; i++){			
 			for(int j=i+1; j<a.length; j++){
-				sum.add(a[i]);
-				sum.add(a[j]);
-				twoSum.add(sum);
+				List<Integer> pair = new ArrayList<>();
+				if(a[i]<=a[j]){
+					pair.add(a[i]);
+					pair.add(a[j]);
+				}
+				else{
+					pair.add(a[j]);
+					pair.add(a[i]);
+				}
+				twoSum.add(pair);
 			}
 		}
+		System.out.println(twoSum);
 		
-		List<List<Integer>> triplet = new ArrayList<>();
-		for(int n : a){
-			for(List<Integer> pair : twoSum){
-				if(doSum(pair, n)==0){
-					pair.add(n);
-					triplet.add(pair);
+		List<List<Integer>> threeSum = new ArrayList<>();
+		for(List<Integer> pair : twoSum){			
+			for(int n : a){
+				//System.out.println(pair);
+				if(doSum(pair, n) == 0){					
+					List<Integer> triplet = new ArrayList<Integer>();
+					if(n<=pair.get(0)){
+						triplet.add(n);
+						triplet.add(pair.get(0));
+						triplet.add(pair.get(1));
+					}
+					else if(n>=pair.get(1)){						
+						triplet.add(pair.get(0));
+						triplet.add(pair.get(1));
+						triplet.add(n);
+					}
+					else{
+						triplet.add(pair.get(0));
+						triplet.add(n);
+						triplet.add(pair.get(1));						
+					}									
+					threeSum.add(triplet);
 				}
 			}
-		}
+		}					
 		
-		return triplet;
+		return threeSum;
 	}
 	
-	private static int doSum(List<Integer> pair, int n){
+	private static int doSum(List<Integer> pair, int n){			
 		int sum = n;
 		for(int m : pair)	sum += m;
 		return sum;
@@ -46,7 +67,7 @@ public class Solution {
 	public static void main(String[] args) {
 		int[] a = {-1, 0, 1, 2, -1, -4}; 
 		int target = 0;
-		
+		System.out.println(get3Sum(a, target));
 		/*int[] trivialOut = findTargetTrivial(a, target);
 		assert(trivialOut[0] == 0);
 		assert(trivialOut[1] == 1);
