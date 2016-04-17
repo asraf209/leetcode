@@ -2,11 +2,15 @@ package threesum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import sun.awt.windows.ThemeReader;
 
 public class Solution {
 	
-	public static List<List<Integer>> get3Sum(int[] a, int target){
+	public static ArrayList<ArrayList<Integer>> get3Sum(int[] a, int target){
 		if(a==null || a.length<3)	return null;		
 		
 		List<List<Integer>> twoSum = new ArrayList<>();
@@ -26,12 +30,12 @@ public class Solution {
 		}
 		System.out.println(twoSum);
 		
-		List<List<Integer>> threeSum = new ArrayList<>();
+		Set<ArrayList<Integer>> threeSum = new HashSet<ArrayList<Integer>>();
 		for(List<Integer> pair : twoSum){			
 			for(int n : a){
 				//System.out.println(pair);
 				if(doSum(pair, n) == 0){					
-					List<Integer> triplet = new ArrayList<Integer>();
+					ArrayList<Integer> triplet = new ArrayList<Integer>();
 					if(n<=pair.get(0)){
 						triplet.add(n);
 						triplet.add(pair.get(0));
@@ -46,13 +50,14 @@ public class Solution {
 						triplet.add(pair.get(0));
 						triplet.add(n);
 						triplet.add(pair.get(1));						
-					}									
-					threeSum.add(triplet);
+					}	
+					if(!threeSum.contains(triplet))
+						threeSum.add(triplet);
 				}
 			}
 		}					
 		
-		return threeSum;
+		return new ArrayList<ArrayList<Integer>>(threeSum);
 	}
 	
 	private static int doSum(List<Integer> pair, int n){			
