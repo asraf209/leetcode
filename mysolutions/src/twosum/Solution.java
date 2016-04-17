@@ -40,10 +40,10 @@ public class Solution {
 		Map<Integer, Integer> visited = new HashMap<Integer, Integer>();
 		
 		for(int i=0; i<a.length; i++){
-			int remaining = Math.abs(a[i] - target);
-			if(visited.containsKey(remaining)){
-				out[0] = i;
-				out[1] = visited.get(remaining);
+			int remaining = target - a[i];
+			if(visited.containsKey(remaining)){				
+				out[0] = visited.get(remaining);
+				out[1] = i;
 				return out;
 			}
 			else
