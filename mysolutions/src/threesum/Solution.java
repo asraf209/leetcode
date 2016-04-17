@@ -67,7 +67,9 @@ public class Solution {
 	public static void main(String[] args) {
 		int[] a = {-1, 0, 1, 2, -1, -4}; 
 		int target = 0;
-		System.out.println(get3Sum(a, target));			
+		ArrayList<ArrayList<Integer>> threeSum = get3Sum(a, target);
+		assert(threeSum.size() == 3);		
+		System.out.println(threeSum);			
 	}
 
 }
