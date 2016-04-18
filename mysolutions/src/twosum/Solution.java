@@ -5,6 +5,36 @@ import java.util.Map;
 
 public class Solution {
 
+	public static int[] findTargetAnotherBetterOne(int[] a, int target){
+		if(a==null || a.length<2)	return null;		
+		
+		int[] out = new int[2];
+		int start = 0;
+		int end = a.length-1;
+		
+		while(start < end){
+			
+			if(start>0 && a[start]==a[start-1]){
+				start++;
+				continue;
+			}
+			else if((end+1)<a.length && a[end]==a[end+1]){
+				end--;
+				continue;
+			}
+			
+			int sum = a[start] + a[end];
+			if(sum == target){
+				out[0] = start;
+				out[1] = end;
+				return out;
+			}
+			else if(sum < target)	start++;
+			else	end--;
+		}
+		return out;
+	}
+	
 	/**
 	 * Trivial solution. Time: O(n^2)
 	 * @param a
@@ -66,10 +96,16 @@ public class Solution {
 		System.out.println(trivialOut[0] + ", " + trivialOut[1]);
 		
 		// Better one
-		int[] betterOut = findTargetTrivial(a, target);
+		int[] betterOut = findTargetBetterOne(a, target);
 		assert(betterOut[0] == 0);
 		assert(betterOut[1] == 1);
 		System.out.println(betterOut[0] + ", " + betterOut[1]);
+		
+		// Another Better one
+		int[] banotherBetterOut = findTargetAnotherBetterOne(a, target);
+		assert(banotherBetterOut[0] == 0);
+		assert(banotherBetterOut[1] == 1);
+		System.out.println(banotherBetterOut[0] + ", " + banotherBetterOut[1]);
 	}
 
 }
