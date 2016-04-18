@@ -1,11 +1,4 @@
-Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
+You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
 
-Note:
-Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a ≤ b ≤ c ≤ d)
-The solution set must not contain duplicate quadruplets.
-    For example, given array S = {1 0 -1 0 -2 2}, and target = 0.
-
-    A solution set is:
-    (-1,  0, 0, 1)
-    (-2, -1, 1, 2)
-    (-2,  0, 0, 2)
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
