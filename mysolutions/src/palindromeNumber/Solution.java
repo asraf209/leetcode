@@ -39,6 +39,17 @@ public class Solution {
 	}
 
 
+	public boolean isPalindrome(int x) {
+
+		int reverseX = reverse(x);
+
+		if(x == reverseX)	return true;
+
+		return false;
+
+    	}
+
+
 	/**
 
 	 * @param args
