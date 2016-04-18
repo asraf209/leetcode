@@ -5,12 +5,11 @@ package reverseInteger;
 public class Solution {
 
 	public static int reverse(int x){
-
 		if(x==0)	return x;		
 
 		int n = Math.abs(x);
 
-		int out = 0;
+		long out = 0;
 
 		while(n/10!=0){			
 
@@ -22,10 +21,19 @@ public class Solution {
 
 		}
 
-		if(x<0)	return (10*out + n)*(-1);
+		if(x<0)	out = (10*out + n)*(-1);
 
-		return 10*out + n;
+		else	out = 10*out + n;
 
+		
+
+		if(out < Integer.MIN_VALUE || out > Integer.MAX_VALUE)	
+
+			return 0;
+
+		
+
+		return (int)out;
 	}
 
 	/**
