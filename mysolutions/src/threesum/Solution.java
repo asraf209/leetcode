@@ -1,12 +1,37 @@
 package threesum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Solution {
 	
+	public static List<List<Integer>> get3Sum2ndApproach(int[] nums, int target){
+		if(nums==null || nums.length<3)	return new ArrayList<>();
+		
+		Arrays.sort(nums);
+		List<List<Integer>> threeSum = new ArrayList<>();
+		for(int i=0; i<nums.length-2; i++){
+			int start = i+1;
+			int end = nums.length-1;
+			while(start < end){
+				int sum = nums[i] + nums[start] + nums[end];
+				if(sum == target){
+					List<Integer> triplet = new ArrayList<>();
+					triplet.add(nums[i]);
+					triplet.add(nums[start]);
+					triplet.add(nums[end]);
+					threeSum.add(triplet);
+				}
+				else if(sum < target)	start++;
+				else end--;
+			}
+		}
+		
+		return threeSum;
+	}
 	
 	/**
 	 * O(n^2). Time limit exceeded
