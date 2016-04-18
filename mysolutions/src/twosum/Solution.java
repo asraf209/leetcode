@@ -5,6 +5,12 @@ import java.util.Map;
 
 public class Solution {
 
+	/**
+	 * This is a good approach. The same kind of approach can be used to compute 3sum, 4sum
+	 * @param a
+	 * @param target
+	 * @return
+	 */
 	public static int[] findTargetAnotherBetterOne(int[] a, int target){
 		if(a==null || a.length<2)	return null;		
 		
