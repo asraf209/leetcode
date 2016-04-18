@@ -46,7 +46,13 @@ public class Solution {
 
 		// TODO Auto-generated method stub
 
+		System.out.println(reverse(123));
 
+		System.out.println(reverse(-123));
+
+		System.out.println(reverse(-1230));
+
+		System.out.println(reverse(1534236469));
 
 	}
 
