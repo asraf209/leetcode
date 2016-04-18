@@ -2,14 +2,12 @@ package foursum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Solution {
 	
 	/**
-	 * Time: O(n^2). This is the good one. 
+	 * Time: O(n^3). This is the good one. 
 	 * Do not need to use extra spaces. Also faster than the previous one.
 	 * @param nums
 	 * @param target
