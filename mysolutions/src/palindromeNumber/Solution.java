@@ -39,8 +39,8 @@ public class Solution {
 	}
 
 
-	public boolean isPalindrome(int x) {
-
+	public static boolean isPalindrome(int x) {
+		if(x<0)	return false;
 		int reverseX = reverse(x);
 
 		if(x == reverseX)	return true;
@@ -60,7 +60,13 @@ public class Solution {
 
 		// TODO Auto-generated method stub
 
+		System.out.println(isPalindrome(123));
 
+		System.out.println(isPalindrome(121));
+
+		System.out.println(isPalindrome(-123));
+
+		System.out.println(isPalindrome(-121));
 
 	}
 
