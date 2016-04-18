@@ -8,6 +8,13 @@ import java.util.Set;
 
 public class Solution {
 	
+	/**
+	 * Time: O(n^2). This is the good one. 
+	 * Do not need to use extra spaces. Also faster than the previous one.
+	 * @param nums
+	 * @param target
+	 * @return
+	 */
 	public static List<List<Integer>> get3Sum2ndApproach(int[] nums, int target){
 		if(nums==null || nums.length<3)	return new ArrayList<>();
 		
@@ -102,7 +109,7 @@ public class Solution {
 		}					
 		
 		List<List<Integer>> out = new ArrayList<>(threeSum);		
-		return out;//new List<List<Integer>>(threeSum);
+		return out;
 	}
 	
 	private static int doSum(List<Integer> pair, int n){			
@@ -115,15 +122,14 @@ public class Solution {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] a = {0, 0, 0, 0};
-		//int[] a = {-1, 0, 1, 2, -1, -4};
+		//int[] a = {0, 0, 0, 0};
+		int[] a = {-1, 0, 1, 2, -1, -4};
 		//int[] a = {7,-1,14,-12,-8,7,2,-15,8,8,-8,-14,-4,-5,7,9,11,-4,-15,-6,1,-14,4,3,10,-5,2,1,6,11,2,-2,-5,-7,-6,2,-15,11,-6,8,-4,2,1,-1,4,-6,-15,1,5,-15,10,14,9,-8,-6,4,-6,11,12,-15,7,-1,-9,9,-1,0,-4,-1,-12,-2,14,-9,7,0,-3,-4,1,-2,12,14,-10,0,5,14,-1,14,3,8,10,-8,8,-5,-2,6,-11,12,13,-7,-12,8,6,-13,14,-2,-5,-11,1,3,-6};
 		int target = 0;
 		long startTime = System.currentTimeMillis();
 		//List<List<Integer>> threeSum = get3Sum(a, target);
 		List<List<Integer>> threeSum = get3Sum2ndApproach(a, target);
-		long endTime = System.currentTimeMillis();
-		//assert(threeSum.size() == 3);
+		long endTime = System.currentTimeMillis();	
 		System.out.println(endTime - startTime);
 		System.out.println(threeSum);			
 	}
