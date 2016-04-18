@@ -1,16 +1,12 @@
 package threesumclosest;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Solution {
 	
 	/**
 	 * Time: O(n^2). This is the good one. 
-	 * Do not need to use extra spaces. Also faster than the previous one.
+	 * Same like 3SUM
 	 * @param nums
 	 * @param target
 	 * @return
@@ -20,7 +16,7 @@ public class Solution {
 				
 		Arrays.sort(nums);
 		
-		int closestDiff = 0;//Integer.MAX_VALUE;
+		int closestDiff = 0;
 		int a=0, b=0, c=0;		
 		
 		for(int i=0; i<nums.length-2; i++){
@@ -29,13 +25,6 @@ public class Solution {
 			
 			int start = i+1;
 			int end = nums.length-1;
-			
-			/*if(i==0){
-				closestDiff = Math.abs(target-(nums[i] + nums[start] + nums[end]));
-				a = nums[i];
-				b = nums[start];
-				c = nums[end];
-			}*/
 			
 			while(start < end){								
 				if((start-1)!=i && (nums[start] == nums[start-1])){
@@ -53,16 +42,6 @@ public class Solution {
 					System.out.println(nums[i]+", " + nums[start]+", " +nums[end]);	
 					return nums[i] + nums[start] + nums[end];
 				}
-				//else if(Math.abs(target-sum) < closestDiff){
-				/*else if((sum-target) < closestDiff){
-					a = nums[i];
-					b = nums[start];
-					c = nums[end];
-					closestDiff = Math.abs(target-sum);
-					start++;
-					//end--;					
-				}
-				else	end--;*/
 				
 				if(sum < target){
 					if(closestDiff == 0 || (target-sum)<closestDiff){
