@@ -2,6 +2,10 @@ package palindromeLinkedList;
 
 import org.w3c.dom.NodeList;
 
+import sun.java2d.pipe.SolidTextRenderer;
+
+import com.sun.corba.se.spi.ior.MakeImmutable;
+
 public class Solution {
 	class ListNode {
 		int val;
@@ -19,7 +23,7 @@ public class Solution {
 			slow = slow.next;
 			fast = fast.next.next;
 		}		
-		if(fast.next==null)		// Odd number of items
+		if(fast!=null && fast.next==null)		// Odd number of items
 			slow = slow.next;	
 		
 		// Make two list
@@ -27,8 +31,9 @@ public class Solution {
 		ListNode rightHead = null;
 		ListNode rightTail = rightHead;
 		
+		//System.out.println(slow);
 		// Reverse the right half and make a LinkedList
-		while(slow!=null){
+		while(slow!=null){			
 			ListNode tmp = slow;
 			slow = slow.next;
 			tmp.next = null;
@@ -45,7 +50,9 @@ public class Solution {
 		
 		// Compare the two LinkedList to find if it is palindrome or not
 		ListNode rightPointer = rightHead;
-		while(leftHead.next!=rightHead || leftHead.next.next!=rightHead){
+		while(leftHead != rightHead && rightPointer!=null){
+			//System.out.println(leftHead);
+			System.out.println(rightPointer);
 			if(leftHead.val != rightPointer.val)	return false;
 			leftHead = leftHead.next;
 			rightPointer = rightPointer.next;
@@ -53,12 +60,34 @@ public class Solution {
 		return true;
     }
 
+	public ListNode makeLinkedList(int[] a){
+		ListNode head = null;
+		ListNode tail = head;
+		for(int n : a){
+			if(head ==null){
+				head = new ListNode(n);
+				tail = head;
+			}
+			else{
+				tail.next = new ListNode(n);
+				tail = tail.next;
+			}
+		}
+		return head;
+	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		int[] a={0,0};
+		Solution obj = new Solution();
+		ListNode head = obj.makeLinkedList(a);
+		System.out.println(obj.isPalindrome(head));
+		/*while(head!=null){
+			System.out.println(head.val);
+			head = head.next;
+		}*/
 	}
 
 }
