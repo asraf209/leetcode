@@ -74,11 +74,11 @@ public class BasicCalculator {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		calculate("1 + 1");
+		System.out.println(calculate("1 + 1"));
 		System.out.println();
-		calculate("1+1");
+		System.out.println(calculate("1+1"));
 		System.out.println();
-		calculate(" 2-1 + 2 ");
+		System.out.println(calculate(" 2-1 + 2 "));
 		System.out.println();
 		System.out.println(calculate("(1+(4+5+2)-3)+(6+8)"));
 	}
