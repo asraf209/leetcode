@@ -12,7 +12,38 @@ public class BasicCalculator {
     }
 	
 	private static int evaluate(List<Character> tokens){		
-		return 0;		
+		if(tokens == null || tokens.size()==0)	return 0;
+		
+		int a, b;
+		Stack<Integer> stack = new Stack<Integer>();		
+		for(char ch : tokens){
+			switch(ch){
+				case '/':
+					b = stack.pop();
+					a = stack.pop();
+					stack.push(a/b);
+					break;
+				case '*':
+					b = stack.pop();
+					a = stack.pop();
+					stack.push(a*b);
+					break;
+				case '+':
+					b = stack.pop();
+					a = stack.pop();
+					stack.push(a+b);
+					break;
+				case '-':
+					b = stack.pop();
+					a = stack.pop();
+					stack.push(a-b);
+					break;
+				default:
+					stack.push(ch - '0');
+					break;
+			}					
+		}
+		return stack.pop();		
 	}
 	
 	private static List<Character> convertToReversePolishNotation(String s){
