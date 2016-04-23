@@ -3,7 +3,7 @@ package validParentheses;
 import java.util.Stack;
 
 public class Solution {
-	public boolean isValid(String s) {
+	public static boolean isValid(String s) {
         if(s==null || s.isEmpty())	return false;
 		Stack<Character> chStack = new Stack<Character>();
 		for(char ch : s.toCharArray()){
@@ -23,7 +23,8 @@ public class Solution {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println(isValid("()"));
+		System.out.println(isValid("()}"));
 	}
 
 }
