@@ -48,10 +48,9 @@ public class BasicCalculator {
 	
 	private static List<String> convertToReversePolishNotation(String s){
 		Stack<String> operators = new Stack<>();
-		List<String> rpn = new ArrayList<>();
-		
-		//List<String> rpn1 = new ArrayList<>();
+		List<String> rpn = new ArrayList<>();				
 		StringBuffer sbf = new StringBuffer();
+		
 		for(char c : s.toCharArray()){
 			if(c==' ' || c=='(' || c==')' || c=='+' || c=='-'){
 				if(sbf.length()!=0){
@@ -70,8 +69,7 @@ public class BasicCalculator {
 				}
 			}
 			else{
-				sbf.append(c);
-				//rpn1.add(c);
+				sbf.append(c);		
 			}
 		}
 		if(sbf.length()!=0){
@@ -84,31 +82,6 @@ public class BasicCalculator {
 		}
 		System.out.println(rpn);
 		return rpn;
-		
-		
-		
-		
-		/*for(char c : s.toCharArray()){
-			if(c==' '){
-				
-				continue;
-			}
-			else if(c=='(' || c=='+' || c=='-')	operators.push(c);
-			else if(c==')'){
-				char p = operators.pop();
-				while(p!='('){
-					rpn.add(p);
-					p = operators.pop();
-				}
-			}
-			else rpn.add(c);
-		}
-		if(!operators.isEmpty()){
-			while(!operators.isEmpty())
-				rpn.add(operators.pop());
-		}
-		System.out.println(rpn);
-		return rpn;*/
 	}
 		
 	
