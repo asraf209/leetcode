@@ -69,10 +69,7 @@ public class BasicCalculatorII {
 			}
 			
 			if(c==' ')	continue;							
-			else if(c=='(' || c=='+' || c=='-' || c=='*' || c=='/'){
-				// (-)ve has more precedence over (+)ve
-				//if(!operators.isEmpty() && operators.peek().equals("-"))
-					//rpn.add(operators.pop());
+			else if(c=='(' || c=='+' || c=='-' || c=='*' || c=='/'){							
 				operators.push(""+c);
 			}
 			else if(c==')'){
