@@ -52,7 +52,7 @@ public class BasicCalculatorII {
 		StringBuffer sbf = new StringBuffer();
 		
 		for(char c : s.toCharArray()){
-			if(c==' ' || c=='(' || c==')' || c=='+' || c=='-' || c=='*' || c=='\\'){
+			if(c==' ' || c=='(' || c==')' || c=='+' || c=='-' || c=='*' || c=='/'){
 				if(sbf.length()!=0){
 					rpn.add(sbf.toString());
 					sbf.setLength(0);
@@ -69,7 +69,7 @@ public class BasicCalculatorII {
 			}
 			
 			if(c==' ')	continue;							
-			else if(c=='(' || c=='+' || c=='-'){
+			else if(c=='(' || c=='+' || c=='-' || c=='*' || c=='/'){
 				// (-)ve has more precedence over (+)ve
 				//if(!operators.isEmpty() && operators.peek().equals("-"))
 					//rpn.add(operators.pop());
@@ -111,22 +111,19 @@ public class BasicCalculatorII {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(calculate("1 + 1"));
-		System.out.println();
-		System.out.println(calculate("1+1"));
-		System.out.println();
-		System.out.println(" 2-1 + 2 ");
-		System.out.println(calculate(" 2-1 + 2 "));
-		System.out.println();
-		System.out.println("(1+(4+5+2)-3)+(6+8)");
-		System.out.println(calculate("(1+(4+5+2)-3)+(6+8)"));
+		// TODO Auto-generated method stub		
+		System.out.println("3+2*2");
+		System.out.println(calculate("3+2*2"));
 		System.out.println();
 		
-		System.out.println(calculate("1234"));
+		System.out.println(" 3/2 ");
+		System.out.println(calculate(" 3/2 "));
 		System.out.println();
-		System.out.println("(7)-(0)+(4)");
-		System.out.println(calculate("(7)-(0)+(4)"));
+		
+		System.out.println(" 3+5 / 2 ");
+		System.out.println(calculate(" 3+5 / 2 "));
+		System.out.println();
+				
 		
 	}
 
