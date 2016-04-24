@@ -56,24 +56,36 @@ public class BasicCalculator {
 				if(sbf.length()!=0){
 					rpn.add(sbf.toString());
 					sbf.setLength(0);
+					
+					// (-)ve has more precedence over (+)ve
+					if(!operators.isEmpty() && operators.peek().equals("-"))
+						rpn.add(operators.pop());
 				}				
 			}
 			
 			if(c==' ')	continue;							
-			else if(c=='(' || c=='+' || c=='-')	operators.push(""+c);
+			else if(c=='(' || c=='+' || c=='-'){
+				// (-)ve has more precedence over (+)ve
+				//if(!operators.isEmpty() && operators.peek().equals("-"))
+					//rpn.add(operators.pop());
+				operators.push(""+c);
+			}
 			else if(c==')'){
 				String p = operators.pop();
 				while(!p.equals("(")){
 					rpn.add(p);
 					p = operators.pop();
 				}
+				// (-)ve has more precedence over (+)ve
+				if(!operators.isEmpty() && operators.peek().equals("-"))
+					rpn.add(operators.pop());
 			}
 			else{
 				sbf.append(c);		
 			}
 		}
 		if(sbf.length()!=0){
-			rpn.add(sbf.toString());
+			rpn.add(sbf.toString());			
 		}
 		
 		if(!operators.isEmpty()){
@@ -94,6 +106,7 @@ public class BasicCalculator {
 		System.out.println();
 		System.out.println(calculate("1+1"));
 		System.out.println();
+		System.out.println(" 2-1 + 2 ");
 		System.out.println(calculate(" 2-1 + 2 "));
 		System.out.println();
 		System.out.println("(1+(4+5+2)-3)+(6+8)");
@@ -101,6 +114,10 @@ public class BasicCalculator {
 		System.out.println();
 		
 		System.out.println(calculate("1234"));
+		System.out.println();
+		System.out.println("(7)-(0)+(4)");
+		System.out.println(calculate("(7)-(0)+(4)"));
+		
 	}
 
 }
