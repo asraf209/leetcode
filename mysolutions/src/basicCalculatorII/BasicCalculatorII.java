@@ -52,13 +52,18 @@ public class BasicCalculatorII {
 		StringBuffer sbf = new StringBuffer();
 		
 		for(char c : s.toCharArray()){
-			if(c==' ' || c=='(' || c==')' || c=='+' || c=='-'){
+			if(c==' ' || c=='(' || c==')' || c=='+' || c=='-' || c=='*' || c=='\\'){
 				if(sbf.length()!=0){
 					rpn.add(sbf.toString());
 					sbf.setLength(0);
 					
 					// (-)ve has more precedence over (+)ve
-					if(!operators.isEmpty() && operators.peek().equals("-"))
+					if(!operators.isEmpty() && (
+													operators.peek().equals("-") || 
+													operators.peek().equals("*") ||
+													operators.peek().equals("/")
+												)
+					)
 						rpn.add(operators.pop());
 				}				
 			}
@@ -77,8 +82,13 @@ public class BasicCalculatorII {
 					p = operators.pop();
 				}
 				// (-)ve has more precedence over (+)ve
-				if(!operators.isEmpty() && operators.peek().equals("-"))
-					rpn.add(operators.pop());
+				if(!operators.isEmpty() && (
+										operators.peek().equals("-") || 
+										operators.peek().equals("*") ||
+										operators.peek().equals("/")
+									)
+				)
+				rpn.add(operators.pop());
 			}
 			else{
 				sbf.append(c);		
