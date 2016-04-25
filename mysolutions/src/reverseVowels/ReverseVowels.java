@@ -16,15 +16,17 @@ public class ReverseVowels {
         vowels.add('U');
         
         while(true){
-        	while(start<ch.length && !vowels.contains(ch[start]))
+        	while(start<ch.length && !vowels.contains(Character.toUpperCase(ch[start])))
         		start++;
-        	while(end>=0 && !vowels.contains(ch[start]))
+        	while(end>=0 && !vowels.contains(Character.toUpperCase(ch[end])))
         		end--;
         	
         	if(start<end){
 	        	char tmp = ch[start];
 	        	ch[start] = ch[end];
 	        	ch[end] = tmp;
+	        	start++;
+	        	end--;
         	}
         	else	break;
         }
@@ -37,7 +39,8 @@ public class ReverseVowels {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println(reverseVowels("hello"));
+		System.out.println(reverseVowels("leetcode"));
 	}
 
 }
