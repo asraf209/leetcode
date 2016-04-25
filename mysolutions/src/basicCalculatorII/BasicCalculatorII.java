@@ -9,7 +9,7 @@ import java.util.Stack;
 public class BasicCalculatorII {
 	public static int calculate(String s) {
 		if(s==null || s.trim().isEmpty())	return 0;
-		List<String> rpn = convertToReversePolishNotation2(s.trim());
+		List<String> rpn = convertToReversePolishNotation(s.trim());
         return evaluate(rpn);
     }
 	
@@ -46,77 +46,9 @@ public class BasicCalculatorII {
 			}					
 		}
 		return stack.pop();		
-	}
+	}	
 	
 	private static List<String> convertToReversePolishNotation(String s){
-		Stack<String> operators = new Stack<>();
-		List<String> rpn = new ArrayList<>();				
-		StringBuffer sbf = new StringBuffer();
-		
-		for(char c : s.toCharArray()){
-			if(c==' ' || c=='(' || c==')' || c=='+' || c=='-' || c=='*' || c=='/'){
-				if(sbf.length()!=0){
-					rpn.add(sbf.toString());
-					sbf.setLength(0);
-					
-					// (-)ve has more precedence over (+)ve
-					/*if(!operators.isEmpty() && (
-													operators.peek().equals("-") || 
-													operators.peek().equals("*") ||
-													operators.peek().equals("/")
-												)
-					)
-						rpn.add(operators.pop());*/
-				}				
-			}
-			
-			if(c==' ')	continue;			
-			else if(c=='(')	operators.push(""+c);
-			else if(c=='/'){
-				if(!operators.isEmpty() && operators.peek().equals("/"))
-					rpn.add(operators.pop());
-				operators.push(""+c);
-			}
-			else if(c=='*'){
-				if(!operators.isEmpty() && operators.peek().equals("/"))
-					rpn.add(operators.pop());
-				operators.push(""+c);
-			}			
-			else if(c=='-'){
-				if(!operators.isEmpty() && (operators.peek().equals("*") || operators.peek().equals("/") || operators.peek().equals("-")))
-					rpn.add(operators.pop());
-				operators.push(""+c);
-			}
-			else if(c=='+'){
-				if(!operators.isEmpty() && (operators.peek().equals("*") || operators.peek().equals("/") || operators.peek().equals("-")))
-					rpn.add(operators.pop());
-				operators.push(""+c);
-			}
-			else if(c==')'){
-				String p = operators.pop();
-				while(!p.equals("(")){
-					rpn.add(p);
-					p = operators.pop();
-				}			
-			}
-			else{
-				sbf.append(c);		
-			}
-		}
-		if(sbf.length()!=0){
-			rpn.add(sbf.toString());			
-		}
-		
-		if(!operators.isEmpty()){
-			while(!operators.isEmpty())
-				rpn.add(operators.pop());
-		}
-		System.out.println(rpn);
-		return rpn;
-	}
-	
-	
-	private static List<String> convertToReversePolishNotation2(String s){
 		Stack<String> operators = new Stack<>();
 		List<String> rpn = new ArrayList<>();				
 		StringBuffer sbf = new StringBuffer();
@@ -147,101 +79,16 @@ public class BasicCalculatorII {
 				
 				operators.push(""+c);				
 			}
-			else if(c==')'){
-				System.out.println("Ashraf");
+			else if(c==')'){				
 				while(!operators.isEmpty()){
 					String p = operators.pop();
 					if(p.equals("("))	break;
 					rpn.add(p);
 				}
-				/*String p = operators.pop();
-				while(!p.equals("(")){
-					rpn.add(p);
-					p = operators.pop();
-				}*/
 			}
 			else
 				sbf.append(c);
 			
-			
-			
-			/*switch(c){
-				case '(':
-					operators.push(""+c);
-					break;
-				case '/':
-					if(!operators.isEmpty()){
-						while(hierarchy.get(operators.peek()) >= hierarchy.get(""+c))
-							rpn.add(operators.pop());						
-					}
-					operators.push(""+c);
-					break;
-				case '*':
-					if(!operators.isEmpty()){
-						while(hierarchy.get(operators.peek()) >= hierarchy.get(""+c))
-							rpn.add(operators.pop());						
-					}
-					operators.push(""+c);
-					break;
-				case '-':
-					if(!operators.isEmpty()){
-						while(hierarchy.get(operators.peek()) >= hierarchy.get(""+c))
-							rpn.add(operators.pop());						
-					}
-					operators.push(""+c);
-					break;
-				case '+':
-					if(!operators.isEmpty()){
-						while(hierarchy.get(operators.peek()) >= hierarchy.get(""+c))
-							rpn.add(operators.pop());						
-					}
-					operators.push(""+c);
-					break;
-				case ')':
-					String p = operators.pop();
-					while(!p.equals("(")){
-						rpn.add(p);
-						p = operators.pop();
-					}
-					break;
-				default:					
-					sbf.append(c);		
-					break;
-			}*/
-			
-			
-			
-			/*else if(c=='(')	operators.push(""+c);
-			else if(c=='/'){
-				if(!operators.isEmpty() && operators.peek().equals("/"))
-					rpn.add(operators.pop());
-				operators.push(""+c);
-			}
-			else if(c=='*'){
-				if(!operators.isEmpty() && operators.peek().equals("/"))
-					rpn.add(operators.pop());
-				operators.push(""+c);
-			}			
-			else if(c=='-'){
-				if(!operators.isEmpty() && (operators.peek().equals("*") || operators.peek().equals("/") || operators.peek().equals("-")))
-					rpn.add(operators.pop());
-				operators.push(""+c);
-			}
-			else if(c=='+'){
-				if(!operators.isEmpty() && (operators.peek().equals("*") || operators.peek().equals("/") || operators.peek().equals("-")))
-					rpn.add(operators.pop());
-				operators.push(""+c);
-			}
-			else if(c==')'){
-				String p = operators.pop();
-				while(!p.equals("(")){
-					rpn.add(p);
-					p = operators.pop();
-				}			
-			}
-			else{
-				sbf.append(c);		
-			}*/
 		}
 		if(sbf.length()!=0){
 			rpn.add(sbf.toString());			
