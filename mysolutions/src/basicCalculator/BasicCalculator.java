@@ -64,6 +64,55 @@ public class BasicCalculator {
 			}
 			
 			if(c==' ')	continue;							
+			else if(c=='(')	operators.push(""+c);
+			else if(c=='+' || c=='-'){				
+				while(!operators.isEmpty() && 
+						!operators.peek().equals("("))
+					rpn.add(operators.pop());						
+				
+				operators.push(""+c);				
+			}
+			else if(c==')'){				
+				while(!operators.isEmpty()){
+					String p = operators.pop();
+					if(p.equals("("))	break;
+					rpn.add(p);
+				}
+			}
+			else
+				sbf.append(c);		
+			
+		}
+		if(sbf.length()!=0){
+			rpn.add(sbf.toString());			
+		}
+		
+		if(!operators.isEmpty()){
+			while(!operators.isEmpty())
+				rpn.add(operators.pop());
+		}
+		System.out.println(rpn);
+		return rpn;
+	}
+	
+	private static List<String> convertToReversePolishNotation2(String s){
+		Stack<String> operators = new Stack<>();
+		List<String> rpn = new ArrayList<>();				
+		StringBuffer sbf = new StringBuffer();
+		
+		for(char c : s.toCharArray()){
+			if(c==' ' || c=='(' || c==')' || c=='+' || c=='-'){
+				if(sbf.length()!=0){
+					rpn.add(sbf.toString());
+					sbf.setLength(0);
+					
+					// (-)ve has more precedence over (+)ve
+					if(!operators.isEmpty() && operators.peek().equals("-"))
+						rpn.add(operators.pop());
+				}				
+			}
+			
+			if(c==' ')	continue;							
 			else if(c=='(' || c=='+' || c=='-'){
 				// (-)ve has more precedence over (+)ve
 				//if(!operators.isEmpty() && operators.peek().equals("-"))
