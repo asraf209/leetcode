@@ -7,7 +7,20 @@ public class RotateList {
 		 ListNode(int x) { val = x; }
 	}
 	
-	public static ListNode rotateRight(ListNode head, int k) {
+	public ListNode returnList(){
+		ListNode n1 = new ListNode(1);
+		ListNode n2 = new ListNode(2);
+		ListNode n3 = new ListNode(3);
+		ListNode n4 = new ListNode(4);
+		ListNode n5 = new ListNode(5);
+		n1.next = n2;
+		n2.next = n3;
+		n3.next = n4;
+		n4.next = n5;
+		return n1;
+	}
+	
+	public ListNode rotateRight(ListNode head, int k) {
 		if(head==null || head.next==null || k<=0)	return head;
 		ListNode n1 = head;
 		ListNode n2 = head;
@@ -38,7 +51,13 @@ public class RotateList {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		RotateList obj = new RotateList();
+		ListNode head = obj.returnList();
+		ListNode retHead = obj.rotateRight(head, 2);
+		while(retHead != null){
+			System.out.println(retHead.val);
+			retHead = retHead.next;
+		}
 	}
 
 }
