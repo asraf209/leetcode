@@ -29,15 +29,15 @@ public class RotateList {
 				
 		int i=1;
 		int count = 0;
-		ListNode tail = null;
+		//ListNode tail = null;
 		while(i<k && n2!=null){
-			tail = n2;
+			//tail = n2;
 			n2 = n2.next;
 			i++;
 			count++;
 		}
 		if(n2==null){
-			return rotateRight(head, (k-count));
+			return rotateRight(head, (k % count));
 			/*ListNode h = new ListNode(tail.val);
 			h.next = head;
 			tail = null;			
@@ -64,9 +64,9 @@ public class RotateList {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		RotateList obj = new RotateList();
-		int[] a = {1, 2};
+		int[] a = {1, 2, 3};
 		ListNode head = obj.makeList(a);
-		ListNode retHead = obj.rotateRight(head, 3);
+		ListNode retHead = obj.rotateRight(head, 20000);
 		while(retHead != null){
 			System.out.println(retHead.val);
 			retHead = retHead.next;
