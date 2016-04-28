@@ -1,8 +1,19 @@
 package rotateArray;
 
 public class RotateArray {
+	
+	/**
+	 * This algorithm is same as Reversing a String.
+	 * Rotate left part
+	 * Rotate right part
+	 * Rotate whole array
+	 * @param nums
+	 * @param k
+	 */
 	public static void rotate(int[] nums, int k) {
-        if(nums==null || nums.length<2 || k<1)	return;
+        if(nums==null || nums.length<2 || k<1 || k==nums.length)	return;
+        if(k>nums.length)	k = k % nums.length;
+        
         rotateXtoY(nums, 0, nums.length-1-k);
         rotateXtoY(nums, nums.length-k, nums.length-1);
         rotateXtoY(nums, 0, nums.length-1);
