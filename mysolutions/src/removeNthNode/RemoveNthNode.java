@@ -48,19 +48,21 @@ public class RemoveNthNode {
 			p2 = p2.next;
 		}
 		
-		leftTail.next = p1.next;
+		if(p1 == head)	head = head.next;	// nth node is the head
+		else if(leftTail!=null)	leftTail.next = p1.next;
 		
 		return head;
     }
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] a = {1, 2, 3, 4, 5};
+		int[] a = {1, 2, 3};
 		RemoveNthNode obj = new RemoveNthNode();
 		ListNode head = obj.makeList(a);
-		ListNode retHead = obj.removeNthFromEnd(head, 2);
+		ListNode retHead = obj.removeNthFromEnd(head, 3);
 		while(retHead != null){
 			System.out.println(retHead.val);
 			retHead = retHead.next;
