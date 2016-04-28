@@ -36,7 +36,8 @@ public class RemoveNthNode {
 			i++;
 		}
 		
-		if(p2==null)	return head;	// n > Size of the list
+		// n > Size of the list
+		if(p2==null)	return head.next;	// LeetCode wants to remove head in this case. Dont know why
 		
 		/**
 		 * Move the sublist till the end
