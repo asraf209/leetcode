@@ -28,17 +28,20 @@ public class RotateList {
 		ListNode n2 = head;
 				
 		int i=1;
+		int count = 0;
 		ListNode tail = null;
 		while(i<k && n2!=null){
 			tail = n2;
 			n2 = n2.next;
 			i++;
+			count++;
 		}
 		if(n2==null){
-			ListNode h = new ListNode(tail.val);
+			return rotateRight(head, (k-count));
+			/*ListNode h = new ListNode(tail.val);
 			h.next = head;
-			tail = null;
-			return h;
+			tail = null;			
+			return h;*/
 		}
 		
 		ListNode leftTail = null;
@@ -63,7 +66,7 @@ public class RotateList {
 		RotateList obj = new RotateList();
 		int[] a = {1, 2};
 		ListNode head = obj.makeList(a);
-		ListNode retHead = obj.rotateRight(head, 2);
+		ListNode retHead = obj.rotateRight(head, 3);
 		while(retHead != null){
 			System.out.println(retHead.val);
 			retHead = retHead.next;
