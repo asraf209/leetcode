@@ -26,10 +26,14 @@ public class RemoveNthNode {
 		/**
 		 * Move the sublist till the end
 		 */
+		ListNode leftTail = null;
 		while(p2.next != null){
+			leftTail = p1;
 			p1 = p1.next;
 			p2 = p2.next;
 		}
+		
+		leftTail.next = p1.next;
 		
 		return head;
     }
