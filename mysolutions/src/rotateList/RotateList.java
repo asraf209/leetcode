@@ -22,6 +22,20 @@ public class RotateList {
 		return head;
 	}
 	
+	/**
+	 * For k <= Size of the list
+	 * First make a list n1..n2, where n1 and n2 are (k-1) node apart
+	 * Move n2 forward untill they meet the above condition
+	 * Move both n1, n2 untill they reach the end point
+	 * Then move that seq in the front of head
+	 * 
+	 * For k > Size of the list
+	 * Do (k % Size of the list). This is the actual value of k that we need to consider
+	 * Call the above above algorithm with new k value
+	 * @param head of the LinkedList
+	 * @param k, Number of times we have to rotate the lsit
+	 * @return	Rotated LinkedList
+	 */
 	public ListNode rotateRight(ListNode head, int k) {
 		if(head==null || head.next==null || k<=0)	return head;
 		ListNode n1 = head;
