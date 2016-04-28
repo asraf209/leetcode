@@ -28,20 +28,14 @@ public class RotateList {
 		ListNode n2 = head;
 				
 		int i=1;
-		int count = 0;
-		//ListNode tail = null;
-		while(i<k && n2!=null){
-			//tail = n2;
+		int count = 0;		
+		while(i<k && n2!=null){			
 			n2 = n2.next;
 			i++;
 			count++;
 		}
 		if(n2==null){
-			return rotateRight(head, (k % count));
-			/*ListNode h = new ListNode(tail.val);
-			h.next = head;
-			tail = null;			
-			return h;*/
+			return rotateRight(head, (k % count));			
 		}
 		
 		ListNode leftTail = null;
