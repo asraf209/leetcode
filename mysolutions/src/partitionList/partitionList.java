@@ -1,10 +1,34 @@
 package partitionList;
 
+import removeNthNode.RemoveNthNode.ListNode;
+
 public class partitionList {
 	public class ListNode {
 		 int val;
 		 ListNode next;
 		 ListNode(int x) { val = x; }
+	}
+	
+	public ListNode makeList(int[] a){
+		ListNode head=null, curr= null;
+		for(int n : a){
+			if(head==null){
+				head = new ListNode(n);
+				curr = head;
+			}
+			else{
+				curr.next = new ListNode(n);
+				curr = curr.next;
+			}
+		}		
+		return head;
+	}
+	
+	public static void printList(ListNode head){
+		while(head!=null){
+			System.out.print(head.val + "->");
+			head = head.next;
+		}
 	}
 	
 	public ListNode partition(ListNode head, int x) {
@@ -43,7 +67,8 @@ public class partitionList {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		int[] a = {1, 4, 3, 2, 5, 2};
+		
 	}
 
 }
