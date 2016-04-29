@@ -27,6 +27,8 @@ public class PartitionList {
 			System.out.print(head.val + "->");
 			head = head.next;
 		}
+		System.out.print("null");
+		System.out.println();
 	}
 	
 	public ListNode partition(ListNode head, int x) {
@@ -40,25 +42,36 @@ public class PartitionList {
 		ListNode p = head;
 		
 		while(p!=null){
-			if(p.val < x)	addToList(leftHead, leftTail, p);
-			else	addToList(rightHead, rightTail, p);
+			if(p.val < x){
+				if(leftHead==null){
+					leftHead = p;
+					leftTail = leftHead;
+				}
+				else{
+					leftTail.next = p;
+					leftTail = leftTail.next;
+				}				
+			}							
+			else{
+				if(rightHead==null){
+					rightHead = p;
+					rightTail = rightHead;
+				}
+				else{
+					rightTail.next = p;
+					rightTail = rightTail.next;
+				}
+			}
+				
+			p = p.next;
 		}
-		
-		leftTail.next = rightHead;		
+		//printList(leftHead);
+		if(rightTail!=null)	rightTail.next = null;
+		if(leftTail!=null)	leftTail.next = rightHead;		
 		
 		return leftHead;
     }
-	
-	public void addToList(ListNode head, ListNode tail, ListNode p){
-		if(head == null){
-			head = p;
-			tail = head;
-		}
-		else{
-			tail.next = p;
-			tail = tail.next;
-		}
-	}
+		
 
 	/**
 	 * @param args
@@ -66,7 +79,12 @@ public class PartitionList {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] a = {1, 4, 3, 2, 5, 2};
+		PartitionList obj = new PartitionList();
+		ListNode head = obj.makeList(a);
+		printList(head);
 		
+		head = obj.partition(head, 3);
+		printList(head);
 	}
 
 }
