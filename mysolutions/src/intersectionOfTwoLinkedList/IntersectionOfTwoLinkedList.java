@@ -11,6 +11,22 @@ public class IntersectionOfTwoLinkedList {
 		 }
 	}
 	
+	public ListNode makeList(int[] a){
+		ListNode head = null;
+		ListNode p = null;
+		for(int n : a){
+			if(head == null){
+				head = new ListNode(n);
+				p = head;
+			}
+			else{
+				p.next = new ListNode(n);
+				p = p.next;
+			}
+		}
+		return head;
+	}
+	
 	public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 		if(headA == null || headB == null)	return null;
 		
