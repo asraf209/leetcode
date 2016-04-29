@@ -1,9 +1,7 @@
 package partitionList;
 
-import removeNthNode.RemoveNthNode.ListNode;
-
-public class partitionList {
-	public class ListNode {
+public class PartitionList {
+	class ListNode {
 		 int val;
 		 ListNode next;
 		 ListNode(int x) { val = x; }
