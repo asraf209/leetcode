@@ -71,12 +71,32 @@ public class IntersectionOfTwoLinkedList {
 		return a;
     }
 	
+	public static void printList(ListNode head){
+		while(head != null){
+			System.out.print(head.val + "->");
+			head = head.next;
+		}
+		System.out.print("null");
+		System.out.println();
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		IntersectionOfTwoLinkedList obj = new IntersectionOfTwoLinkedList();
+		
+		int[] a = {1,2,3,4,5};
+		ListNode headA = obj.makeList(a);
+		printList(headA);
+		
+		int[] b = {6,7,8,3,4,5};
+		ListNode headB = obj.makeList(b);
+		printList(headB);
+		
+		ListNode comm = obj.getIntersectionNode(headA, headB);
+		printList(comm);
 	}
 
 }
