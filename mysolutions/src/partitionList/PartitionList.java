@@ -65,11 +65,12 @@ public class PartitionList {
 				
 			p = p.next;
 		}
-		//printList(leftHead);
+	
 		if(rightTail!=null)	rightTail.next = null;
 		if(leftTail!=null)	leftTail.next = rightHead;		
 		
-		return leftHead;
+		if(leftHead!=null)	return leftHead;
+		else return rightHead;
     }
 		
 
