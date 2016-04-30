@@ -57,6 +57,16 @@ public class ReverseLinkedListII {
 		return newHead;
     }
 	
+	/**
+	 * Find two node points for m and n
+	 * Reverse that portion
+	 * Find prev node of m
+	 * Link the next of prev m to the head of reversed list
+	 * @param head
+	 * @param m
+	 * @param n
+	 * @return
+	 */
 	public ListNode reverseBetween(ListNode head, int m, int n) {
 		if(head==null || head.next==null)	return head;
 		int i=1;		
@@ -89,7 +99,7 @@ public class ReverseLinkedListII {
 		ListNode head = obj.makeList(a);
 		printList(head);
 				
-		//head = obj.reverseList(head);
-		//printList(head);
+		head = obj.reverseBetween(head, 2, 4);
+		printList(head);
 	}
 }
