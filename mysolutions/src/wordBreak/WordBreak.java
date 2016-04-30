@@ -43,7 +43,8 @@ public class WordBreak {
 		String s = "leetcode";
 		String[] d = {"leet", "code"};
 		Set<String> dict = new HashSet<>(Arrays.asList(d));
-		System.out.println(wordBreak(s, dict));
+		System.out.println(wordBreak(s, dict));				
+		
 	}
 
 }
