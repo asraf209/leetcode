@@ -39,15 +39,15 @@ public class ReverseLinkedListII {
 	 * @param head
 	 * @return
 	 */
-	public ListNode reverseList(ListNode head) {
-		if(head == null || head.next == null)	return head;
+	public ListNode reverseList(ListNode m, ListNode n, ListNode nextN) {
+		if(m == null || m.next == null)	return m;		
 		
-		ListNode prev = head;
-		ListNode curr = head.next;
-		prev.next = null;
+		ListNode prev = m;
+		ListNode curr = m.next;
+		prev.next = nextN;
 		ListNode newHead = prev;
 		
-		while(curr!=null){
+		while(curr!=nextN){
 			prev = curr;
 			curr = curr.next;
 			prev.next = newHead;
@@ -58,6 +58,27 @@ public class ReverseLinkedListII {
     }
 	
 	public ListNode reverseBetween(ListNode head, int m, int n) {
+		if(head==null || head.next==null)	return head;
+		int i=1;		
+		ListNode curr = head;
+		ListNode prevM = head;
+		
+		while(i!=m){
+			prevM = curr;
+			curr = curr.next;
+			i++;
+		}
+		ListNode nodeM = curr;
+		
+		while(i!=n){
+			curr = curr.next;
+			i++;
+		}
+		ListNode nodeN = curr;
+		
+		ListNode revHead = reverseList(nodeM, nodeN, nodeN.next);
+		prevM.next = revHead;
+		
 		return head;
     }
 	
@@ -68,7 +89,7 @@ public class ReverseLinkedListII {
 		ListNode head = obj.makeList(a);
 		printList(head);
 				
-		head = obj.reverseList(head);
-		printList(head);
+		//head = obj.reverseList(head);
+		//printList(head);
 	}
 }
