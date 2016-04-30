@@ -36,13 +36,36 @@ public class ReorderList {
 		while(q!=null && q.next!=null){
 			prevP = p;
 			p = p.next;
-			q = q.next;
+			q = q.next.next;
 		}
 		prevP.next = null;
 		
 		ListNode right = p;
 		ListNode left = head;
 		right = reverseList(right);
+		
+		printList(left);
+		printList(right);
+		
+		p = left;
+		left = left.next;
+		p.next = null;		
+		q = right;
+		right = right.next;
+		q.next = null;
+		p.next = q;
+		ListNode curr = q;
+		while(left!=null){
+			p = left;
+			q = right;
+			left = left.next;
+			right = right.next;
+			p.next = q;
+			q.next = null;
+			curr.next = p;
+			curr = q;
+		}
+		if(right!=null)		curr.next = right;
 	}
 	
 	private ListNode reverseList(ListNode head){
@@ -59,17 +82,7 @@ public class ReorderList {
 		}
 		return newH;
 	}
-	
-	private ListNode getRightHalf(ListNode head){
-		ListNode p = head;
-		ListNode q = head;
-		while(q!=null || q.next!=null){
-			p = p.next;
-			q = q.next;
-		}		
-		return p;
-	}
-	
+		
 	public ListNode makeList(int[] a){
 		ListNode head=null, curr= null;
 		for(int n : a){
@@ -101,11 +114,11 @@ public class ReorderList {
 		ListNode head = obj.makeList(a);
 		printList(head);
 		
-		//obj.reorderList(head);
-		//printList(head);
-		
-		head = obj.reverseList(head);
+		obj.reorderList(head);
 		printList(head);
+		
+		//head = obj.reverseList(head);
+		//printList(head);
 	}
 
 }
