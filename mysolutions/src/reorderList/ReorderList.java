@@ -28,8 +28,16 @@ public class ReorderList {
 		}		
     }
 
+	/**
+	 * More efficient algorithm. Runs in O(n) time and O(1) space
+	 * @param head
+	 */
 	public void reorderList(ListNode head) {
 		if(head==null || head.next==null || head.next.next==null)	return;
+		/**
+		 * Separate left and right part.
+		 * Reverse right one
+		 */
 		ListNode p = head;
 		ListNode q = head;
 		ListNode prevP = p;
@@ -38,15 +46,19 @@ public class ReorderList {
 			p = p.next;
 			q = q.next.next;
 		}
-		prevP.next = null;
-		
+		/**
+		 * Be sure to make the tail null to keep them separate.
+		 */
+		prevP.next = null;	
+									
 		ListNode right = p;
 		ListNode left = head;
-		right = reverseList(right);
+		right = reverseList(right);				
 		
-		printList(left);
-		printList(right);
 		
+		/**
+		 * Take each node from both part and link them
+		 */
 		p = left;
 		left = left.next;
 		p.next = null;		
