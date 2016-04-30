@@ -7,7 +7,11 @@ public class ReorderList {
 		 ListNode(int x) { val = x; }
 	}
 	
-	public void reorderList(ListNode head) {
+	/**
+	 * This one works in O(n^2)
+	 * @param head
+	 */
+	public void reorderListN2(ListNode head) {
 		if(head==null || head.next==null || head.next.next==null)	return;
 		ListNode p = head;
 		while(p.next!=null && p.next.next!=null){
@@ -24,6 +28,20 @@ public class ReorderList {
 		}		
     }
 
+	public void reorderList(ListNode head) {
+		if(head==null || head.next==null || head.next.next==null)	return;
+		ListNode p = getLeftPart(head);
+		ListNode q = getRightPart(head);
+	}
+	
+	private ListNode getLeftPart(ListNode head){
+		return null;
+	}
+	
+	private ListNode getRightPart(ListNode head){
+		return null;
+	}
+	
 	public ListNode makeList(int[] a){
 		ListNode head=null, curr= null;
 		for(int n : a){
