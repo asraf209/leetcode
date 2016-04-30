@@ -68,10 +68,10 @@ public class ReverseLinkedListII {
 	 * @return
 	 */
 	public ListNode reverseBetween(ListNode head, int m, int n) {
-		if(head==null || head.next==null)	return head;
+		if(head==null || head.next==null || m==n)	return head;
 		int i=1;		
 		ListNode curr = head;
-		ListNode prevM = head;
+		ListNode prevM = null;
 		
 		while(i!=m){
 			prevM = curr;
@@ -87,19 +87,21 @@ public class ReverseLinkedListII {
 		ListNode nodeN = curr;
 		
 		ListNode revHead = reverseList(nodeM, nodeN, nodeN.next);
-		prevM.next = revHead;
+		if(prevM!=null)	prevM.next = revHead;
 		
-		return head;
+		if(m>1)	return head;
+		else return revHead;
     }
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] a = {1, 2, 3, 4, 5};
+		//int[] a = {1, 2, 3, 4, 5};
+		int[] a = {3, 5};
 		ReverseLinkedListII obj = new ReverseLinkedListII();
 		ListNode head = obj.makeList(a);
 		printList(head);
 				
-		head = obj.reverseBetween(head, 2, 4);
+		head = obj.reverseBetween(head, 1, 2);
 		printList(head);
 	}
 }
