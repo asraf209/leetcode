@@ -46,6 +46,8 @@ public class WordBreak {
 	
 	/**
 	 * Dynamic Programming
+	 * Define an array t[] such that 
+	 * t[i]==true => 0-(i-1) can be segmented using dictionary
 	 * @param s
 	 * @param wordDict
 	 * @return
@@ -54,10 +56,11 @@ public class WordBreak {
 		if(s==null || s.trim().isEmpty() || wordDict==null || wordDict.isEmpty())
 			return false;
 		boolean[] dp = new boolean[s.length()+1];
-		dp[0] = true;
+		dp[0] = true;	// Set first to be true. Because we need initial state
 		
 		for(int i=0; i<s.length(); i++){
-			if(!dp[i])	continue;
+			if(!dp[i])	// After getting first match, continue from there
+				continue;
 			
 			for(String w : wordDict){
 				int len = w.length();
