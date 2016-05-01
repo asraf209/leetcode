@@ -25,27 +25,13 @@ public class RotatedSortedArrayIISearch {
     }
 	
 	/**
-	 * Find the transition point.
-	 * Values will not be in order in that point
+	 * Binary search can not be used here, as in the previous problem
+	 * Because, duplicate elements can be anywhere, which makes it difficult to do binary search
 	 * @param a
 	 * @param s
 	 * @param e
 	 * @return
 	 */
-	private static int findStartPosition123(int[] a, int s, int e){
-		if(s >= e)	return 0;
-		System.out.println("s: " + s + ", e: " + e);
-		int mid = (s + e)/2;
-		
-		// Values will not be in an order in that point
-		if((mid-1)>=s && (a[mid] < a[mid-1]))	return mid;
-		else if((mid+1)<=e && (a[mid] > a[mid+1]))	return mid+1;
-		
-		if((mid-1)>=s && (a[s] > a[mid-1]))	return findStartPosition(a, s, mid-1);
-		else if(a[mid] > a[e])	return findStartPosition(a, mid, e);
-		return 0;
-	}
-	
 	private static int findStartPosition(int[] a, int s, int e){
 		int pos = 0;
 		for(int i=s+1; i<=e; i++){
