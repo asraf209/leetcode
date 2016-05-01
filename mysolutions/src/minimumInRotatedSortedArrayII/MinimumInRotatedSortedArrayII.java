@@ -17,30 +17,27 @@ public class MinimumInRotatedSortedArrayII {
     }	
 	
 	/**
-	 * Find the transition point.
-	 * Values will not be in order in that point
+	 * Binary search can not be used here, as in the previous problem
+	 * Because, duplicate elements can be anywhere, which makes it difficult to do binary search
 	 * @param a
 	 * @param s
 	 * @param e
 	 * @return
 	 */
 	private static int findStartPosition(int[] a, int s, int e){
-		if(s > e)	return 0;
-		System.out.println("s: " + s + ", e: " + e);
-		int mid = (s + e)/2;
-		
-		// Values will not be in an order in that point
-		if((mid-1)>=s && (a[mid] < a[mid-1]))	return mid;
-		else if((mid+1)<=e && (a[mid] > a[mid+1]))	return mid+1;
-		
-		if((mid-1)>=s && (a[s] > a[mid-1]))	return findStartPosition(a, s, mid-1);
-		else if(a[mid] > a[e])	return findStartPosition(a, mid, e);
-		return 0;
+		int pos = 0;
+		for(int i=s+1; i<=e; i++){
+			if(a[i-1] > a[i]){
+				pos = i;
+				break;
+			}
+		}
+		return pos;
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] a = {2, 4, 5, 5, 6, 6, 7, 0, 1};
+		int[] a = {1, 1, 3, 1};
 		//int[] a = {1};
 		System.out.println(findMin(a));
 	}
