@@ -1,28 +1,20 @@
 package minimumInRotatedSortedArray;
 
 public class MinimumInRotatedSortedArray {
-	public static int search(int[] nums, int target) {
-		if(nums == null || nums.length < 1)	return -1;
+	
+	/**
+	 * Find the transition point
+	 * It contains the minimum element
+	 * O(log n)
+	 * @param nums
+	 * @return
+	 */
+	public static int findMin(int[] nums) {
+		if(nums == null || nums.length < 1)	return Integer.MAX_VALUE;
 		int start = findStartPosition(nums, 0, nums.length-1);
-		int end = 0;
-		System.out.println("Transition: " + start);
-		if((nums[start]<=target) && (target <= nums[nums.length-1])){
-			end = nums.length-1;
-		}
-		else{
-			if(start>0)	end = start -1;
-			start = 0;			
-		}
-		System.out.println("start: " + start + ", end: " + end);
-		while(start <= end){
-			int mid = (start + end)/2;
-			if(nums[mid]==target)	return mid;
-			if(target < nums[mid])	end = mid -1;
-			else start = mid + 1;
-		}
-		
-		return -1;
-    }
+		System.out.println("Transition point: " + start);
+		return nums[start];
+    }	
 	
 	/**
 	 * Find the transition point.
@@ -50,7 +42,7 @@ public class MinimumInRotatedSortedArray {
 		// TODO Auto-generated method stub
 		int[] a = {2, 4, 5, 5, 6, 6, 7, 0, 1};
 		//int[] a = {1};
-		System.out.println(search(a, 2));
+		System.out.println(findMin(a));
 	}
 
 }
