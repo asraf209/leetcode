@@ -8,7 +8,13 @@ import java.util.Set;
 
 public class WordBreak {
 	
-	public static boolean wordBreak(String s, Set<String> wordDict) {
+	/**
+	 * O(n^2) solution
+	 * @param s
+	 * @param wordDict
+	 * @return
+	 */
+	public static boolean wordBreak12(String s, Set<String> wordDict) {
 		if(s==null || s.trim().isEmpty() || wordDict==null || wordDict.isEmpty())
 			return false;
 		
@@ -37,6 +43,35 @@ public class WordBreak {
 		}
 		return true;
     }
+	
+	/**
+	 * Dynamic Programming
+	 * @param s
+	 * @param wordDict
+	 * @return
+	 */
+	public static boolean wordBreak(String s, Set<String> wordDict) {
+		if(s==null || s.trim().isEmpty() || wordDict==null || wordDict.isEmpty())
+			return false;
+		boolean[] dp = new boolean[s.length()+1];
+		dp[0] = true;
+		
+		for(int i=0; i<s.length(); i++){
+			if(!dp[i])	continue;
+			
+			for(String w : wordDict){
+				int len = w.length();
+				int end = i + len;
+				
+				if(end > s.length())	continue;
+				
+				if(s.subSequence(i, end).equals(w))
+					dp[end] = true;
+			}
+		}
+		
+		return dp[s.length()];
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
