@@ -15,6 +15,7 @@ public class Solution {
 	public static int[] findTargetAnotherBetterOne(int[] a, int target){
 		if(a==null || a.length<2)	return null;		
 		
+		Arrays.sort(a);
 		int[] out = new int[2];
 		int start = 0;
 		int end = a.length-1;
