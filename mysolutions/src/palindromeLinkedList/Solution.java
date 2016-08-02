@@ -51,6 +51,13 @@ public class Solution {
 		return true;
     }
 
+	/**
+	 * Another approach: 
+	 * 1. Find the mid point
+	 * 2. Keep slow at head and fast at (mid+1) 
+	 */
+	
+	
 	public ListNode makeLinkedList(int[] a){
 		ListNode head = null;
 		ListNode tail = head;
