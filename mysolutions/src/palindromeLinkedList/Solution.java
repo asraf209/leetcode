@@ -1,5 +1,16 @@
 package palindromeLinkedList;
 
+/**
+ * 2nd approach: 
+ * 1. Find the mid point using slow/fast pointer
+ * 2. While traversing, put values of each slow node into a Stack
+ * 3. After getting the mid point, forward fast to the end by 1x speed, till null
+ * 4. While doing Step 3, pop elements from Stack and compare with fast node value
+ * 5. At any point, if they mismatch, return false
+ * 6. After fast become null, Stack should be empty. Return true if it is so, else return false 
+ */
+
+
 public class Solution {
 	class ListNode {
 		int val;
@@ -50,13 +61,6 @@ public class Solution {
 		}		
 		return true;
     }
-
-	/**
-	 * Another approach: 
-	 * 1. Find the mid point
-	 * 2. Keep slow at head and fast at (mid+1) 
-	 */
-	
 	
 	public ListNode makeLinkedList(int[] a){
 		ListNode head = null;
